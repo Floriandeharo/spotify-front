@@ -15,7 +15,9 @@
             <div class="hover-animation">
               <a href="" (click)="login()" class="me-4">Sign up</a>
             </div>
-            <a href="" (click)="login()" class="btn btn-light hover-animation" >Login</a>
+            <!-- <a  target="_self">Login</a> -->
+
+            <a href="{{environment.API_URL}}/oauth2/authorization/okta" (click)="login()" class="btn btn-light hover-animation" >Login</a>
           </div>
         } @else {
           <button class="btn btn-light hover-animation me-2" (click)="logout()">Logout</button>

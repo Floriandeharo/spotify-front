@@ -6,11 +6,15 @@ import { NavigationComponent } from './layout/navigation/navigation.component';
 import { LibraryComponent } from "./layout/library/library.component";
 import { HeaderComponent } from './layout/header/header.component';
 import { HttpClient } from '@angular/common/http';
+import { ToastService } from './service/toast.service';
+import { ToastInfo } from './service/model/toast-info.model';
+import { NgbToastModule } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-root',
   imports: [
     RouterOutlet,
+    NgbToastModule,
     FontAwesomeModule,
     NavigationComponent,
     LibraryComponent,
@@ -24,10 +28,12 @@ export class AppComponent implements OnInit {
 
   private faIconLibrary: FaIconLibrary = inject(FaIconLibrary);
   http = inject(HttpClient);
-
+  toastService = inject(ToastService);
   ngOnInit(): void {
     this.initFontAwesome();
+    this.toastService.show("Hello", "SUCCES");
   }
+
 
   // public test(){
 

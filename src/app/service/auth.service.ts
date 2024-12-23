@@ -24,8 +24,6 @@ export class AuthService {
   fetchUser = computed(() => this.fetchUser$());
 
 
-  private triggerAuthPopup$: WritableSignal<AuthPopupState> = signal("CLOSE");
-  authPopupStateChange = computed(() => this.triggerAuthPopup$());
 
   fetch(): void {
     this.http.get<User>(`${environment.API_URL}/api/get-authenticated-user`)
@@ -33,8 +31,11 @@ export class AuthService {
         next: user => this.fetchUser$.set(State.Builder<User, HttpErrorResponse>().forSuccess(user).build()),
         error: (err: HttpErrorResponse) => {
           if (err.status === HttpStatusCode.Unauthorized && this.isAuthenticated()) {
+            console.log('User is not authenticated anymore');
             this.fetchUser$.set(State.Builder<User, HttpErrorResponse>().forSuccess({email: this.notConnected}).build());
           } else {
+            console.error('Error while fetching user', err);
+            console.error('Error while fetching user', err.error);
             this.fetchUser$.set(State.Builder<User, HttpErrorResponse>().forError(err).build());
           }
         }
@@ -70,9 +71,6 @@ export class AuthService {
       })
   }
 
-  openOrCloseAuthPopup(state: AuthPopupState) {
-    this.triggerAuthPopup$.set(state);
-  }
 
   constructor() {
   }

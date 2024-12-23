@@ -3,6 +3,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AuthService } from '../../service/auth.service';
 import {Location} from "@angular/common";
 import { User } from '../../service/model/user.model';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-header',
@@ -20,6 +21,7 @@ export class HeaderComponent implements OnInit{
 
   location = inject(Location);
 
+  environment = environment;
   consctructor() {
     effect(() => {
         if(this.authService.fetchUser().status == "OK"){
