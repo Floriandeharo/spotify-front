@@ -8,9 +8,9 @@ export class ToastService {
 
   toasts : ToastInfo[] = [];
 
-  show(body: string, type: "SUCCES" | "DANGER" ){
+  show(body: string, type: "SUCCESS" | "DANGER" ){
     let className;
-    if(type === "SUCCES"){
+    if(type === "SUCCESS"){
       className = "bg-success text-light";
     }else{
       className = "bg-danger text-light";

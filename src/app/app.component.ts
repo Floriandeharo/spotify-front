@@ -31,7 +31,7 @@ export class AppComponent implements OnInit {
   toastService = inject(ToastService);
   ngOnInit(): void {
     this.initFontAwesome();
-    this.toastService.show("Hello", "SUCCES");
+    this.toastService.show("Hello", "SUCCESS");
   }
 
 

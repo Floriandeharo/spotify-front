@@ -14,7 +14,7 @@ export interface SongBase {
 
 export interface SaveSong extends SongBase {
   file?: File;
-  fileContentTypes?: string;
+  fileContentType?: string;
   cover?: File;
-  coverContentTypes: string;
+  coverContentType?: string;
 }
