@@ -47,7 +47,7 @@ constructor() {
     this.isCreating = false;
     if(this.songService.addSig().status === "OK"){
       this.toastService.show("Song created with success", "SUCCESS");
-      // this.songService.getAll();
+      this.songService.getAll();
       this.router.navigate(['/'])
     }else if(this.songService.addSig().status === "ERROR"){
       this.toastService.show("Error creating song", "DANGER");

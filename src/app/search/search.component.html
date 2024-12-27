@@ -1,0 +1,27 @@
+<div class="position-absolute flex-nowrap input-group search-bar z-3">
+  <span class="border-0 rounded-start-5 input-group-text pe-1">
+    <fa-icon icon="search"> </fa-icon>
+  </span>
+  <input type="search" [ngModel]="searchTerm" (ngModelChange)="onSearch($event)"
+   class="border-0 rounded-end-5 form-control me-2 search-input ps-2" aria-label="Search" placeholder="Search for songs">
+</div>
+<div class="pt-3">
+  @if (isSearching) {
+    <div class="d-flex justofy-content-center mt-5 h-100">
+      <div class="spinner-grow text-primary loader">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+  }@else if (searchTerm.length >= 1 && songsResult.length === 0) {
+    <div class="d-flex justify-content-center h-100">
+      No results for this search
+    </div>
+  }@else {
+    @for (song of songsResult; track song.publicId) {
+      <div class="song-card-background w-100 mb-2 p-2 pe-3 d-flex align-items-center">
+        <app-small-song-card [song]="song" class="w-100" (songToPlay$)="onPlay($event)"></app-small-song-card>
+        <app-favorite-song-btn [song]="song"></app-favorite-song-btn>
+      </div>
+    }
+  }
+</div>

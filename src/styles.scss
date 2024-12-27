@@ -3,3 +3,37 @@
 /* Importing Bootstrap SCSS file. */
 @import 'assets/scss/bootstrap-variables';
 @import 'bootstrap/scss/bootstrap';
+
+.nav-icon{
+  font-size: 20px;
+}
+
+.song-card-background{
+  cursor:pointer;
+  background-color: $card-inactive-background;
+}
+
+.song-card-background:hover{
+  background-color: $card-hover-background;
+  border-radius: $card-border-radius;
+}
+
+.author{
+  color: $secondary;
+  font-size: $font-size-small;
+}
+
+/* Personnaliser la barre de défilement */
+::-webkit-scrollbar {
+  width: 8px;  /* Largeur de la barre de défilement verticale */
+  height: 8px;  /* Hauteur de la barre de défilement horizontale */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: transparent;  /* Couleur de la partie déplaçable de la barre */
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;  /* Couleur de la piste de la barre de défilement */
+}
